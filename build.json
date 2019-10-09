@@ -33,6 +33,11 @@
         }
     ],
     "provisioners": [
-        {}
+        {
+            "type": "powershell",
+            "inline": [
+                "C:\\Windows\\system32\\sysprep\\sysprep.exe /generalize /shutdown /oobe"
+            ]
+        }
     ]
 }
