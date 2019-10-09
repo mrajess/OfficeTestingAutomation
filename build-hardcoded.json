@@ -30,7 +30,7 @@
         {
             "type": "Powershell",
             "inline": [
-                "%WINDIR%\system32\sysprep\sysprep.exe /generalize /shutdown /oobe"
+                "%WINDIR%\\system32\\sysprep\\sysprep.exe /generalize /shutdown /oobe"
             ]
         }
     ]
