@@ -25,9 +25,6 @@
     ],
     "provisioners": [
         {
-            "type": "windows-update"
-        },
-        {
             "type": "Powershell",
             "inline": [
                 "%WINDIR%\\system32\\sysprep\\sysprep.exe /generalize /shutdown /oobe"
