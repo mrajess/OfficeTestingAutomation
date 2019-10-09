@@ -1,0 +1,29 @@
+{
+    "variables": {},
+    "builders": [
+        {
+            "type": "azure-arm",
+            "client_id": "0687c5c4-d7e6-454d-b2e9-5d8adee7b5d3",
+            "client_secret": "_pFG4F0/5F4XykEIYpC.xFfD]Gs9jHHy",
+            "tenant_id": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+            "subscription_id": "1a0a3f26-c387-4204-891e-be296382e9d2",
+            "managed_image_name": "Win2016-{{isotime \"200601020304\"}}",
+            "managed_image_resource_group_name": "packer-build",
+            "os_type": "Windows",
+            "image_publisher": "MicrosoftWindowsServer",
+            "image_offer": "WindowsServer",
+            "image_sku": "2016-Datacenter",
+            "communicator": "winrm",
+            "winrm_use_ssl": "true",
+            "winrm_insecure": "true",
+            "winrm_timeout": "3m",
+            "winrm_username": "packer",
+            "location": "East US",
+            "vm_size": "Standard_DS2",
+            "async_resourcegroup_delete": true
+        }
+    ],
+    "provisioners": [
+        {}
+    ]
+}
