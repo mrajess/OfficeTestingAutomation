@@ -18,6 +18,15 @@
             "subscription_id": "{{user `subscription_id`}}",
             "managed_image_name": "{{user `managed_image_prefix`}}-{{isotime \"200601020304\"}}",
             "managed_image_resource_group_name": "{{user `managed_image_resource_group_name`}}",
+            "shared_image_gallery_destination": {
+                "resource_group": "packer-build",
+                "gallery_name": "Office_Automation",
+                "image_name": "{{user `managed_image_prefix`}}-{{isotime \"200601020304\"}}",
+                "image_version": "1.0.0",
+                "replication_regions": [
+                    "EastUS"
+                ]
+            },
             "os_type": "Windows",
             "image_publisher": "microsoftwindowsdesktop",
             "image_offer": "windows-7",
@@ -34,9 +43,15 @@
     ],
     "provisioners": [
         {
+            "type": "powershell",
+            "inline": [
+                "New-Item -path $Env:SystemRoot -Name temp -ItemType directory"
+            ]
+        },
+        {
             "type": "file",
-            "source": "app.tar.gz",
-            "destination": "/tmp/app.tar.gz"
+            "source": "https://mrajesspacker.blob.core.windows.net/install/setup.exe",
+            "destination": "C://tmp//setup.exe"
         },
         {
             "type": "powershell",
