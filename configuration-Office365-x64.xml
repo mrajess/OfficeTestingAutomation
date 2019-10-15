@@ -1,0 +1,10 @@
+<Configuration>
+	<Add OfficeClientEdition="64" Channel="targeted">
+		<Product ID="O365ProPlusRetail">
+			<Language ID="en-us" />
+		</Product>
+	</Add>
+	<Updates Enabled="TRUE" Channel="Targeted" />
+	<Display Level="None" AcceptEULA="TRUE" />
+	<Property Name="SharedComputerLicensing" Value="1" />
+</Configuration>
