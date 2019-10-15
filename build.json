@@ -49,11 +49,6 @@
             ]
         },
         {
-            "type": "file",
-            "source": "https://mrajesspacker.blob.core.windows.net/install/setup.exe",
-            "destination": "C://tmp//setup.exe"
-        },
-        {
             "type": "powershell",
             "inline": [
                 "while ((Get-Service RdAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
