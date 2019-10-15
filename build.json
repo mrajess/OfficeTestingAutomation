@@ -45,7 +45,7 @@
         {
             "type": "powershell",
             "inline": [
-                "New-Item -path $Env:SystemRoot -Name temp -ItemType directory"
+                "New-Item -path $Env:SystemRoot -Name tmp -ItemType directory"
             ]
         },
         {
