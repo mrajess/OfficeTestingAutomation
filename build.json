@@ -24,7 +24,7 @@
                 "resource_group": "packer-build",
                 "gallery_name": "Office_Automation",
                 "image_name": "Win7_OfficeProPlus",
-                "image_version": "1.0.0",
+                "image_version": "{{isotime \"01\"}}.{{isotime \"2006\"}}.{{isotime \"0304\"}}",
                 "replication_regions": [
                     "EastUS"
                 ]
