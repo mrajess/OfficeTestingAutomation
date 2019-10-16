@@ -16,6 +16,15 @@
             "subscription_id": "{{user `subscription_id`}}",
             "managed_image_name": "{{user `managed_image_prefix`}}-{{isotime \"200601020304\"}}",
             "managed_image_resource_group_name": "{{user `managed_image_resource_group_name`}}",
+            "shared_image_gallery_destination": {
+                "resource_group": "packer-build",
+                "gallery_name": "Office_Automation",
+                "image_name": "Win7_OfficeProPlus",
+                "image_version": "1.0.0",
+                "replication_regions": [
+                    "EastUS"
+                ]
+            },
             "os_type": "Windows",
             "image_publisher": "microsoftwindowsdesktop",
             "image_offer": "windows-7",
@@ -35,7 +44,7 @@
             "type": "powershell",
             "inline": [
                 "New-Item -path $Env:SystemRoot -Name tmp -ItemType directory",
-                "Invoke-WebRequest -Uri 'https://mrajesspacker.blob.core.windows.net/install/setup.exe' -OutFile $Env:SystemRoot\\tmp\\setup.exe"
+                "Invoke-WebRequest -Uri 'https://mrajesspacker.blob.core.windows.net/install/setup.exe' -OutFile C:\\tmp\\setup.exe"
             ]
         },
         {
