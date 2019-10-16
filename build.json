@@ -47,7 +47,7 @@
         {
             "type": "powershell",
             "inline": [
-                "New-Item -path 'c:\\' -Name tmp -ItemType directory",
+                "New-Item -path 'c:\\' -Name tmp -ItemType directory"
             ]
         },
         {
