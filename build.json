@@ -53,7 +53,7 @@
         },
         {
             "type": "file",
-            "source": "{{user `source_folder`}}\\",
+            "source": "{{user `source_folder`}}",
             "destination": "c:\\tmp"
         },
         {
