@@ -23,14 +23,15 @@
             "communicator": "winrm",
             "winrm_use_ssl": "true",
             "winrm_insecure": "true",
-            "winrm_timeout": "10m",
+            "winrm_timeout": "3m",
             "winrm_username": "packer",
             "location": "East US",
             "vm_size": "Standard_DS2",
             "async_resourcegroup_delete": true,
             "virtual_network_name": "packer",
             "virtual_network_subnet_name": "default",
-            "virtual_network_resource_group_name": "{{user `managed_image_resource_group_name`}}"
+            "virtual_network_resource_group_name": "{{user `managed_image_resource_group_name`}}",
+            "private_virtual_network_with_public_ip": true
         }
     ],
     "provisioners": [
