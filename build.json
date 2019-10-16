@@ -23,7 +23,7 @@
             "communicator": "winrm",
             "winrm_use_ssl": "true",
             "winrm_insecure": "true",
-            "winrm_timeout": "3m",
+            "winrm_timeout": "10m",
             "winrm_username": "packer",
             "location": "East US",
             "vm_size": "Standard_DS2",
@@ -38,7 +38,8 @@
             "type": "powershell",
             "inline": [
                 "New-Item -path 'c:\\' -Name tmp -ItemType directory",
-                "(New-Object System.Net.WebClient).DownloadFile('https://mrajesspacker.blob.core.windows.net/install/setup.exe', 'C:\\tmp\\setup.exe')"
+                "(New-Object System.Net.WebClient).DownloadFile('https://mrajesspacker.blob.core.windows.net/install/setup.exe', 'C:\\tmp\\setup.exe')",
+                "(New-Object System.Net.WebClient).DownloadFile('https://mrajesspacker.blob.core.windows.net/install/configuration-Office365-x64.xml', 'C:\\tmp\\configuration-Office365-x64.xml')"
             ]
         },
         {
