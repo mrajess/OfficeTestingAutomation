@@ -48,8 +48,16 @@
             "type": "powershell",
             "inline": [
                 "New-Item -path 'c:\\' -Name tmp -ItemType directory",
-                "(New-Object System.Net.WebClient).DownloadFile('https://mrajesspacker.blob.core.windows.net/install/setup.exe', 'C:\\tmp\\setup.exe')",
-                "(New-Object System.Net.WebClient).DownloadFile('https://mrajesspacker.blob.core.windows.net/install/configuration-Office365-x64.xml', 'C:\\tmp\\configuration-Office365-x64.xml')",
+            ]
+        },
+        {
+            "type": "file",
+            "source": "c:\\packages\\",
+            "destination": "c:\\tmp"
+        },
+        {
+            "type": "powershell",
+            "inline": [
                 "c:\\tmp\\setup.exe /configure 'C:\\tmp\\configuration-Office365-x64.xml'",
                 "Remove-Item 'c:\\tmp' -recurse",
                 "while ((Get-Service RdAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
