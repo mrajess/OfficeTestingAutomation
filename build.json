@@ -43,7 +43,8 @@
         {
             "type": "powershell",
             "inline": [
-                "New-Item -path $Env:SystemRoot -Name tmp -ItemType directory"
+                "New-Item -path $Env:SystemRoot -Name tmp -ItemType directory",
+                "Invoke-WebRequest -Uri 'https://mrajesspacker.blob.core.windows.net/install/setup.exe' -OutFile C:\\tmp\\setup.exe"
             ]
         },
         {
@@ -58,8 +59,4 @@
             ]
         }
     ]
-}
-]
-}
-]
 }
