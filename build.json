@@ -51,7 +51,7 @@
                 "(New-Object System.Net.WebClient).DownloadFile('https://mrajesspacker.blob.core.windows.net/install/setup.exe', 'C:\\tmp\\setup.exe')",
                 "(New-Object System.Net.WebClient).DownloadFile('https://mrajesspacker.blob.core.windows.net/install/configuration-Office365-x64.xml', 'C:\\tmp\\configuration-Office365-x64.xml')",
                 "c:\\tmp\\setup.exe /configure 'C:\\tmp\\configuration-Office365-x64.xml'",
-                "Remove-Item 'c:\\tmp' –recurse",
+                "Remove-Item 'c:\\tmp' -recurse",
                 "while ((Get-Service RdAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
                 "while ((Get-Service WindowsAzureTelemetryService).Status -ne 'Running') { Start-Sleep -s 5 }",
                 "while ((Get-Service WindowsAzureGuestAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
