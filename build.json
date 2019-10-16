@@ -34,8 +34,8 @@
         {
             "type": "powershell",
             "inline": [
-                "New-Item -path $Env:SystemRoot -Name tmp -ItemType directory",
-                "Invoke-WebRequest -Uri 'https://mrajesspacker.blob.core.windows.net/install/setup.exe' -OutFile $Env:SystemRoot\\tmp\\setup.exe"
+                "New-Item -path 'c:\\' -Name tmp -ItemType directory",
+                "(New-Object System.Net.WebClient).DownloadFile('https://mrajesspacker.blob.core.windows.net/install/setup.exe', 'C:\\tmp\\setup.exe')"
             ]
         },
         {
