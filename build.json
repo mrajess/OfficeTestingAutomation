@@ -5,7 +5,8 @@
         "tenant_id": "",
         "subscription_id": "",
         "managed_image_prefix": "",
-        "managed_image_resource_group_name": ""
+        "managed_image_resource_group_name": "",
+        "source_folder": ""
     },
     "builders": [
         {
@@ -52,7 +53,7 @@
         },
         {
             "type": "file",
-            "source": "c:\\packages\\",
+            "source": "{{user `source_folder`}}\\",
             "destination": "c:\\tmp"
         },
         {
