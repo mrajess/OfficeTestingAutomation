@@ -5,7 +5,8 @@
         "tenant_id": "",
         "subscription_id": "",
         "managed_image_prefix": "",
-        "managed_image_resource_group_name": ""
+        "managed_image_resource_group_name": "",
+        "artifact_path": ""
     },
     "builders": [
         {
@@ -47,7 +48,18 @@
         {
             "type": "powershell",
             "inline": [
-                "New-Item -path 'c:\\' -Name tmp -ItemType directory",
+                "New-Item -path 'c:\\' -Name tmp -ItemType directory"
+            ]
+        },
+        {
+            "type": "file",
+            "source": "{{user `artifact_path`}}\\",
+            "destination": "c:\\tmp"
+        },
+        {
+            "type": "powershell",
+            "inline": [
+                "dir"
                 "(New-Object System.Net.WebClient).DownloadFile('https://mrajesspacker.blob.core.windows.net/install/setup.exe', 'C:\\tmp\\setup.exe')",
                 "(New-Object System.Net.WebClient).DownloadFile('https://mrajesspacker.blob.core.windows.net/install/configuration-Office365-x64.xml', 'C:\\tmp\\configuration-Office365-x64.xml')",
                 "c:\\tmp\\setup.exe /configure 'C:\\tmp\\configuration-Office365-x64.xml'",
