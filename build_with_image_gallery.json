@@ -39,12 +39,10 @@
             "async_resourcegroup_delete": true,
             "shared_image_gallery_destination": {
                 "resource_group": "{{user `managed_image_resource_group_name`}}",
-                "gallery_name": "Office_Automation",
-                "image_name": "Win7_OfficeProPlus",
+                "gallery_name": "{{user `gallery_name`}}",
+                "image_name": "{{user `gallery_image_name`}}",
                 "image_version": "{{isotime \"01\"}}.{{isotime \"2006\"}}.{{isotime \"0304\"}}",
-                "replication_regions": [
-                    "EastUS"
-                ]
+                "replication_regions": "{{user `gallery_replication_regions`}}"
             }
         }
     ],
