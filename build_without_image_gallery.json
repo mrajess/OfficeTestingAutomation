@@ -51,7 +51,7 @@
         {
             "type": "powershell",
             "inline": [
-                "c:\\tmp\\setup.exe /configure 'C:\\tmp\\configuration-Office365-x64.xml'",
+                "c:\\tmp\\packages\\setup.exe /configure 'C:\\tmp\\packages\\configuration-Office365-x64.xml'",
                 "while ((Get-Service RdAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
                 "while ((Get-Service WindowsAzureTelemetryService).Status -ne 'Running') { Start-Sleep -s 5 }",
                 "while ((Get-Service WindowsAzureGuestAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
