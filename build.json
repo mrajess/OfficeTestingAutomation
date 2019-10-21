@@ -53,7 +53,7 @@
         },
         {
             "type": "file",
-            "source": "{{user `artifact_path`}}\\",
+            "source": "{{user `artifact_path`}}",
             "destination": "c:\\tmp"
         },
         {
