@@ -6,7 +6,15 @@
         "subscription_id": "",
         "managed_image_prefix": "",
         "managed_image_resource_group_name": "",
-        "artifact_path": ""
+        "artifact_path": "",
+        "image_publisher": "",
+        "image_offer": "",
+        "image_sku": "",
+        "location": "",
+        "vm_size": "",
+        "gallery_name": "",
+        "gallery_image_name": "",
+        "gallery_replication_regions": ""
     },
     "builders": [
         {
@@ -18,30 +26,26 @@
             "managed_image_name": "{{user `managed_image_prefix`}}-{{isotime \"200601020304\"}}",
             "managed_image_resource_group_name": "{{user `managed_image_resource_group_name`}}",
             "os_type": "Windows",
-            "image_publisher": "microsoftwindowsdesktop",
-            "image_offer": "windows-7",
-            "image_sku": "win7-enterprise",
+            "image_publisher": "{{user `image_publisher`}}",
+            "image_offer": "{{user `image_offer`}}",
+            "image_sku": "{{user `image_sku`}}",
+            "communicator": "winrm",
+            "winrm_use_ssl": "true",
+            "winrm_insecure": "true",
+            "winrm_timeout": "3m",
+            "winrm_username": "packer",
+            "location": "{{user `location`}}",
+            "vm_size": "{{user `vm size`}}",
+            "async_resourcegroup_delete": true,
             "shared_image_gallery_destination": {
-                "resource_group": "packer-build",
+                "resource_group": "{{user `managed_image_resource_group_name`}}",
                 "gallery_name": "Office_Automation",
                 "image_name": "Win7_OfficeProPlus",
                 "image_version": "{{isotime \"01\"}}.{{isotime \"2006\"}}.{{isotime \"0304\"}}",
                 "replication_regions": [
                     "EastUS"
                 ]
-            },
-            "communicator": "winrm",
-            "winrm_use_ssl": "true",
-            "winrm_insecure": "true",
-            "winrm_timeout": "3m",
-            "winrm_username": "packer",
-            "location": "East US",
-            "vm_size": "Standard_DS2",
-            "async_resourcegroup_delete": true,
-            "virtual_network_name": "packer",
-            "virtual_network_subnet_name": "default",
-            "virtual_network_resource_group_name": "{{user `managed_image_resource_group_name`}}",
-            "private_virtual_network_with_public_ip": true
+            }
         }
     ],
     "provisioners": [
@@ -53,16 +57,13 @@
         },
         {
             "type": "file",
-            "source": "{{user `artifact_path`}}",
+            "source": "{{user `artifact_path`}}\\packages\\",
             "destination": "c:\\tmp"
         },
         {
             "type": "powershell",
             "inline": [
-                "dir c:\\tmp",
-                "(New-Object System.Net.WebClient).DownloadFile('https://mrajesspacker.blob.core.windows.net/install/setup.exe', 'C:\\tmp\\setup.exe')",
-                "(New-Object System.Net.WebClient).DownloadFile('https://mrajesspacker.blob.core.windows.net/install/configuration-Office365-x64.xml', 'C:\\tmp\\configuration-Office365-x64.xml')",
-                "c:\\tmp\\setup.exe /configure 'C:\\tmp\\configuration-Office365-x64.xml'",
+                "c:\\tmp\\packages\\setup.exe /configure 'C:\\tmp\\packages\\configuration-Office365-x64.xml'",
                 "Remove-Item 'c:\\tmp' -recurse",
                 "while ((Get-Service RdAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
                 "while ((Get-Service WindowsAzureTelemetryService).Status -ne 'Running') { Start-Sleep -s 5 }",
