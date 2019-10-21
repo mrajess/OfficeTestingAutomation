@@ -43,11 +43,6 @@
             ]
         },
         {
-            "type": "file",
-            "source": "{{user `artifact_path`}}",
-            "destination": "c:\\tmp"
-        },
-        {
             "type": "powershell",
             "inline": [
                 "dir c:\\tmp",
