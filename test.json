@@ -11,7 +11,9 @@
         "image_offer": "",
         "image_sku": "",
         "location": "",
-        "vm_size": ""
+        "vm_size": "",
+        "virtual_network_name": "",
+        "virtual_network_subnet_name": ""
     },
     "builders": [
         {
@@ -35,7 +37,7 @@
             "vm_size": "{{user `vm size`}}",
             "async_resourcegroup_delete": true,
             "virtual_network_name": "{{user `virtual_network_name`}}",
-            "virtual_network_name_subnet": "{{user `virtual_network_name_subnet`}}"
+            "virtual_network_subnet_name": "{{user `virtual_network_name_subnet`}}"
         }
     ],
     "provisioners": [
